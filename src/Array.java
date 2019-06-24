@@ -44,11 +44,11 @@ public class Array<T> {
     }
 
     public void addMiddle(T e, int index) {
-        if (size == data.length)
-            throw new IllegalArgumentException("The array is full");
-
         if (index > size || index < 0)
             throw new IllegalArgumentException("The index is illegal");
+
+        if (size == data.length)
+            resize(data.length * 2);
 
         for (int i = size - 1; i >= index; i--)
             data[i + 1] = data[i];
@@ -73,7 +73,7 @@ public class Array<T> {
 
     public boolean contains(T e) {
         for (int i = 0; i < size; i++)
-            if (data[i] == e)
+            if (data[i].equals(e))
                 return true;
 
         return false;
@@ -81,7 +81,7 @@ public class Array<T> {
 
     public int search(T e) {
         for (int i = 0; i < size; i++)
-            if (data[i] == e)
+            if (data[i].equals(e))
                 return i;
 
         return -1;
@@ -99,6 +99,8 @@ public class Array<T> {
         if (index >= size || index < 0)
             throw new IllegalArgumentException("The index is illegal");
 
+        if (size == data.length / 2)
+            resize(data.length / 2);
         T removeNum = data[index];
         for (int i = index + 1; i < size; i++)
             data[i - 1] = data[i];
@@ -128,5 +130,12 @@ public class Array<T> {
         }
         result.append("]");
         return result.toString();
+    }
+
+    private void resize(int newCapacity) {
+        T[] newData = (T[]) new Object[newCapacity];
+        for (int i = 0; i < size; i++)
+            newData[i] = data[i];
+        data = newData;
     }
 }

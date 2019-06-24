@@ -17,7 +17,7 @@ public class Main {
 //            System.out.println(score);
 //        }
 
-        Array<Integer> array = new Array<>(20);
+        Array<Integer> array = new Array<>();
         for (int i = 0; i < 10; i++) {
             array.addLast(i);
         }
@@ -33,7 +33,6 @@ public class Main {
         System.out.println(array);
 
         System.out.println(array.contains(31));
-        System.out.println(array.contains(12));
 
         int target = 31;
         System.out.println(target + "位于第" + (array.search(target) + 1) + "位！");
