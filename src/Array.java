@@ -99,7 +99,7 @@ public class Array<T> {
         if (index >= size || index < 0)
             throw new IllegalArgumentException("The index is illegal");
 
-        if (size == data.length / 2)
+        if (size == data.length / 4)
             resize(data.length / 2);
         T removeNum = data[index];
         for (int i = index + 1; i < size; i++)
